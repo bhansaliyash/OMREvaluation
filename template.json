@@ -1,0 +1,193 @@
+{
+  "pageDimensions": [
+    1500,
+    1700
+  ],
+  "bubbleDimensions": [
+    25,
+    20
+  ],
+  "preProcessors": [
+    {
+      "name": "CropOnMarkers",
+      "options": {
+        "relativePath": "omr_marker.jpg",
+        "sheetToMarkerWidthRatio": 10
+      }
+    }
+  ],
+  "customLabels": {
+    "Name": [
+      "name1",
+      "name2",
+      "name3",
+      "name4",
+      "name5",
+      "name6",
+      "name7",
+      "name8",
+      "name9",
+      "name10",
+      "name11",
+      "name12",
+      "name13",
+      "name14",
+      "name15",
+      "name16",
+      "name17",
+      "name18",
+      "name19",
+      "name20",
+      "name21",
+      "name22",
+      "name23",
+      "name24",
+      "name25",
+      "name26",
+      "name27",
+      "name28",
+      "name29",
+      "name30"
+    ],
+    "Roll Number": [
+      "roll1",
+      "roll2",
+      "roll3",
+      "roll4",
+      "roll5",
+      "roll6",
+      "roll7",
+      "roll8",
+      "roll9",
+      "roll10"
+    ],
+    "Mobile Number": [
+      "mob1",
+      "mob2",
+      "mob3",
+      "mob4",
+      "mob5",
+      "mob6",
+      "mob7",
+      "mob8",
+      "mob9",
+      "mob10"
+    ]
+  },
+  "fieldBlocks": {
+    "Gender": {
+      "bubbleValues": [
+        "Male",
+        "Female"
+      ],
+      "fieldLabels": [
+        "gender"
+      ],
+      "direction": "horizontal",
+      "bubblesGap": 115,
+      "labelsGap": 0,
+      "origin": [
+        1070,
+        320
+      ]
+    },
+    "Name": {
+      "fieldType": "QTYPE_ALPHABETS",
+      "fieldLabels": [
+        "name1..30"
+      ],
+      "bubblesGap": 24.2,
+      "labelsGap": 33,
+      "origin": [
+        5,
+        580
+      ],
+      "emptyValue": " "
+    },
+    "RollNo": {
+      "fieldType": "QTYPE_INT_FROM_1",
+      "fieldLabels": [
+        "roll1..10"
+      ],
+      "bubblesGap": 25,
+      "labelsGap": 34.2,
+      "origin": [
+        1062,
+        640
+      ]
+    },
+    "MobileNo": {
+      "fieldType": "QTYPE_INT_FROM_1",
+      "fieldLabels": [
+        "mob1..10"
+      ],
+      "bubblesGap": 25,
+      "labelsGap": 34.2,
+      "origin": [
+        1062,
+        978
+      ]
+    },
+    "MCQBlock1": {
+      "fieldType": "QTYPE_MCQ5",
+      "fieldLabels": [
+        "q1..10"
+      ],
+      "bubblesGap": 39,
+      "labelsGap": 37,
+      "origin": [
+        58,
+        1300
+      ]
+    },
+    "MCQBlock2": {
+      "fieldType": "QTYPE_MCQ5",
+      "fieldLabels": [
+        "q11..20"
+      ],
+      "bubblesGap": 39,
+      "labelsGap": 37,
+      "origin": [
+        375,
+        1297
+      ]
+    },
+    "MCQBlock3": {
+      "fieldType": "QTYPE_MCQ5",
+      "fieldLabels": [
+        "q21..30"
+      ],
+      "bubblesGap": 39.5,
+      "labelsGap": 37,
+      "origin": [
+        684,
+        1297
+      ]
+    },
+    "MCQBlock4": {
+      "fieldType": "QTYPE_MCQ5",
+      "fieldLabels": [
+        "q31..40"
+      ],
+      "bubblesGap": 39.5,
+      "labelsGap": 37,
+      "origin": [
+        992,
+        1297
+      ]
+    },
+    "MCQBlock5": {
+      "fieldType": "QTYPE_MCQ5",
+      "fieldLabels": [
+        "q41..50"
+      ],
+      "bubblesGap": 39.5,
+      "labelsGap": 37,
+      "origin": [
+        1300,
+        1297
+      ]
+    }
+  },
+  "emptyValue": " "
+}

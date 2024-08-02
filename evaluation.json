@@ -1,0 +1,67 @@
+{
+    "source_type": "custom",
+    "options": {
+        "questions_in_order": [
+            "q1..50"
+        ],
+        "answers_in_order": [
+            "A",
+            "B",
+            "C",
+            "B",
+            "E",
+            "C",
+            "C",
+            "B",
+            "D",
+            "E",
+            "A",
+            "B",
+            "C",
+            "B",
+            "D",
+            "B",
+            "C",
+            "A",
+            "D",
+            "B",
+            "F",
+            "F",
+            "F",
+            "F",
+            "F",
+            "F",
+            "F",
+            "F",
+            "F",
+            "F",
+            "F",
+            "F",
+            "F",
+            "F",
+            "F",
+            "F",
+            "F",
+            "F",
+            "F",
+            "F",
+            "F",
+            "F",
+            "F",
+            "F",
+            "F",
+            "F",
+            "F",
+            "F",
+            "F",
+            "F"
+        ]
+    },
+    "marking_schemes": {
+        "DEFAULT": {
+            "correct": "3",
+            "incorrect": "-1",
+            "unmarked": "0"
+        }
+    }
+}

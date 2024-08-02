@@ -8,7 +8,7 @@ from pathlib import Path
 app = Flask(__name__)
 CORS(app)
 
-@app.route('/api/answerKey', methods=['GET'])
+@app.route('/api/answerKey', methods=['GET', 'OPTIONS'])
 def getAnswerKey():
     file_path = Path('evaluation.json')
     if os.path.exists(file_path):
@@ -18,7 +18,7 @@ def getAnswerKey():
     else:
         abort(404, description="Evaluation file does not exist")
 
-@app.route('/api/evaluationReport', methods=['GET'])
+@app.route('/api/evaluationReport', methods=['GET', 'OPTIONS'])
 def getEvaluationReport():
     file_path = Path('outputs').joinpath('Results').joinpath('Results.csv')
     if os.path.exists(file_path):
@@ -26,12 +26,12 @@ def getEvaluationReport():
     else:
         abort(404, description="Evaluation report does not exist")
 
-@app.route('/api/evaluate', methods=['POST'])
+@app.route('/api/evaluate', methods=['POST', 'OPTIONS'])
 def evaluteOMRs():
     files = request.files.getlist('files')
     return process_dir(files, {'input_paths': ['inputs'], 'debug': True, 'output_dir': 'outputs', 'autoAlign': False, 'setLayout': False})
 
-@app.route('/api/createAnswerKey', methods=['POST'])
+@app.route('/api/createAnswerKey', methods=['POST', 'OPTIONS'])
 def createAnswerKey():
     answers = request.get_json()
     data = {
@@ -44,8 +44,8 @@ def createAnswerKey():
         },
         "marking_schemes": {
             "DEFAULT": {
-            "correct": "3",
-            "incorrect": "-1",
+            "correct": "1",
+            "incorrect": "0",
             "unmarked": "0"
             }
         }

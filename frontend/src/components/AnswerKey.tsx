@@ -15,7 +15,7 @@ const AnswerKey: React.FC<Args> = ({onAnswersSelected}) => {
 
     useEffect(() => {
         const initFunction = () => {
-          axios.get<Array<string>>('http://localhost:5000/api/answerKey').then(response => {
+          axios.get<Array<string>>('http://localhost:8080/api/answerKey').then(response => {
                     setAnswerKey(response.data)
                     setAnswerKeyFlag(true)
                     onAnswersSelected(response.data, false)
@@ -46,9 +46,9 @@ const AnswerKey: React.FC<Args> = ({onAnswersSelected}) => {
 
   return (
     <div>
-        <div className="grid grid-rows-10 grid-flow-col gap-4 m-10">
+        <div className="grid grid-rows-10 grid-flow-col grid-cols-5 gap-4 m-10">
             {Array.from({ length: 50 }, (_, index) => (
-                <div className='px-5'>
+                <div className='px-2'>
                     {answerKeyFlag? (
                         <AnswerInput index={index+1}  answer={answerKey[index]} onOptionClick={optionSelected}></AnswerInput>
                     ): (

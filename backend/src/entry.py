@@ -121,7 +121,6 @@ def process_files(
         files_counter += 1
         file_path = file.filename
         file_name = os.path.basename(file_path)
-        print("Hellooo ", file)
 
         # in_omr = cv2.imread(str(file_path), cv2.IMREAD_GRAYSCALE)
         # images = convert_from_bytes(file.read())

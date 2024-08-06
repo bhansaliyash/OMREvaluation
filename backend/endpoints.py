@@ -8,7 +8,7 @@ from pathlib import Path
 app = Flask(__name__)
 CORS(app)
 
-@app.route('/api/answerKey', methods=['GET', 'OPTIONS'])
+@app.route('/api/answerKey', methods=['GET'])
 def getAnswerKey():
     file_path = Path('evaluation.json')
     if os.path.exists(file_path):
@@ -18,7 +18,7 @@ def getAnswerKey():
     else:
         abort(404, description="Evaluation file does not exist")
 
-@app.route('/api/evaluationReport', methods=['GET', 'OPTIONS'])
+@app.route('/api/evaluationReport', methods=['GET'])
 def getEvaluationReport():
     file_path = Path('outputs').joinpath('Results').joinpath('Results.csv')
     if os.path.exists(file_path):
@@ -26,12 +26,12 @@ def getEvaluationReport():
     else:
         abort(404, description="Evaluation report does not exist")
 
-@app.route('/api/evaluate', methods=['POST', 'OPTIONS'])
+@app.route('/api/evaluate', methods=['POST'])
 def evaluteOMRs():
     files = request.files.getlist('files')
     return process_dir(files, {'input_paths': ['inputs'], 'debug': True, 'output_dir': 'outputs', 'autoAlign': False, 'setLayout': False})
 
-@app.route('/api/createAnswerKey', methods=['POST', 'OPTIONS'])
+@app.route('/api/createAnswerKey', methods=['POST'])
 def createAnswerKey():
     answers = request.get_json()
     data = {
@@ -52,7 +52,7 @@ def createAnswerKey():
     }
 
     json_data = json.dumps(data, indent=4)
-    file_path = 'evaluation.json'  # Specify the file path where you want to save the JSON data
+    file_path = '../backend/evaluation.json'  # Specify the file path where you want to save the JSON data
 
     with open(file_path, 'w') as file:
         file.write(json_data)
@@ -60,4 +60,4 @@ def createAnswerKey():
     return "true"
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(port=8080)

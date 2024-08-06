@@ -202,7 +202,6 @@ class EvaluationConfig:
             options["questions_in_order"]
         )
         answers_in_order = options["answers_in_order"]
-
         self.validate_questions(answers_in_order)
 
         self.section_marking_schemes, self.question_to_scheme = {}, {}

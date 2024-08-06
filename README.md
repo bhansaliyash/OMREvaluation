@@ -3,7 +3,7 @@
 - Install docker
 - Run `docker compose up`
 
-## To stop
+## To stop the running containers
 - docker compose down
 
 ## If you need to make any changes to the code files

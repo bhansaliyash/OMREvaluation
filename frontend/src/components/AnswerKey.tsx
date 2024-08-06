@@ -15,7 +15,7 @@ const AnswerKey: React.FC<Args> = ({onAnswersSelected}) => {
 
     useEffect(() => {
         const initFunction = () => {
-          axios.get<Array<string>>('http://localhost:8080/api/answerKey').then(response => {
+          axios.get<Array<string>>('/api/answerKey').then(response => {
                     setAnswerKey(response.data)
                     setAnswerKeyFlag(true)
                     onAnswersSelected(response.data, false)

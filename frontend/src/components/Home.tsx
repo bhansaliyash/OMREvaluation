@@ -33,7 +33,7 @@ const Home = () => {
         console.log(answers)
         setAnswerKey(answers)
         if(update) {
-            axios.post('http://localhost:8080/api/createAnswerKey', answers).then(response => {
+            axios.post('/api/createAnswerKey', answers).then(response => {
                     console.log(response)
                 })
                 .catch(error => {
@@ -69,7 +69,7 @@ const Home = () => {
         setProgress(0)
         calculateProgress(files.length)
 
-        axios.post<EvaluationResult>('http://localhost:8080/api/evaluate', formData, {
+        axios.post<EvaluationResult>('/api/evaluate', formData, {
             headers: {
                 'Content-Type': 'multipart/form-data',
             },
@@ -84,7 +84,7 @@ const Home = () => {
 
     const downloadEvaluation = ()=>{
         axios({
-            url: 'http://localhost:8080/api/evaluationReport',
+            url: '/api/evaluationReport',
             method: 'GET',
             responseType: 'blob'
         }).then((response) => {

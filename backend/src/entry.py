@@ -56,7 +56,7 @@ def process_dir(
     output_dir = Path(args["output_dir"])
     paths = Paths(output_dir)
 
-    local_evaluation_path = Path(constants.EVALUATION_FILENAME)
+    local_evaluation_path = os.path.join(constants.DATA_DIR, constants.EVALUATION_FILENAME)
     if not args["setLayout"] and os.path.exists(local_evaluation_path):
         evaluation_config = EvaluationConfig(
             local_evaluation_path,

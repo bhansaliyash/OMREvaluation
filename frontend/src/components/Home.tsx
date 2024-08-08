@@ -30,7 +30,6 @@ const Home = () => {
     }
 
     const createAnswerKey = (answers: string[], update: boolean)=> {
-        console.log(answers)
         setAnswerKey(answers)
         if(update) {
             axios.post('/api/createAnswerKey', answers).then(response => {
@@ -164,7 +163,7 @@ const Home = () => {
                                     {row.map((item, colIndex) => (
                                         [1,2].includes(colIndex) ? (<></>) : (
                                             <td key={colIndex} className={classNames('px-6 py-4 whitespace-nowrap',
-                                                {'text-red-700':colIndex>5 && item!==answerKey[colIndex-6], 'text-green-700':colIndex>5 && item===answerKey[colIndex-6]}
+                                                {'text-red-700':colIndex>7 && !answerKey[colIndex-8].includes(item), 'text-green-700':colIndex>7 && answerKey[colIndex-8].includes(item)}
                                             )}>
                                                 {item}
                                             </td>

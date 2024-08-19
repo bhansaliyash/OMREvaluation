@@ -50,7 +50,7 @@ const Home = () => {
 
     async function calculateProgress(items: number) {
         for (let i = 0; i < items; i++) {
-            await new Promise(resolve => setTimeout(resolve, 1000));
+            await new Promise(resolve => setTimeout(resolve, 1500));
             setProgress(Math.floor(100*i/items))
         }
         setProgress(0)

@@ -5,7 +5,7 @@ import axios from 'axios';
 import AnswerKey from './AnswerKey';
 
 interface EvaluationResult {
-    error: [] | [][]
+    error: { [key: string]: string[] }
     multi: [] | [][]
     valid: [] | [][]
 }
@@ -15,6 +15,7 @@ const Home = () => {
     const [files, setFiles] = useState<File[]>([]);
     const [result, setResult] = useState<EvaluationResult>()
     const [pagedValidResult, setPagedValidResult] = useState<[]| [][]>()
+    const [invalidFiles, setInvalidFiles] = useState<string[]>()
     const [page, setPage] = useState<number>(1)
     const [answerKey, setAnswerKey] = useState<Array<string>>(Array(50).fill("F"))
     const [progress, setProgress] = useState<number>(0)
@@ -33,7 +34,6 @@ const Home = () => {
         setAnswerKey(answers)
         if(update) {
             axios.post('/api/createAnswerKey', answers).then(response => {
-                    console.log(response)
                 })
                 .catch(error => {
                     console.error("There was an error!", error);
@@ -42,9 +42,9 @@ const Home = () => {
     }
 
     const changePage = (pageNumber: number) => {
-        if(!(pageNumber<1 || pageNumber>Math.ceil(files.length/pageSize))){
+        if(!(pageNumber<1 || pageNumber>Math.ceil(result?.valid.length!/pageSize))){
             setPage(pageNumber)
-            setPagedValidResult(result?.valid.slice((pageNumber-1)*pageSize,Math.min(pageNumber*pageSize, files.length)))
+            setPagedValidResult(result?.valid.slice((pageNumber-1)*pageSize,Math.min(pageNumber*pageSize, result?.valid.length!)))
         }
     } 
 
@@ -74,6 +74,7 @@ const Home = () => {
             },
         }).then(response => {
                 setResult(response.data)
+                setInvalidFiles(Object.keys(response.data.error).map(key => response.data.error[key][0]));
                 setPagedValidResult(response.data.valid.slice(0, page*pageSize))
             })
             .catch(error => {
@@ -175,7 +176,7 @@ const Home = () => {
                     </table>
                 </div>
                 <nav className="flex items-center flex-column flex-wrap md:flex-row justify-between pt-4" aria-label="Table navigation">
-                    <span className="text-sm font-normal text-gray-500 mb-4 md:mb-0 block w-full md:inline md:w-auto">Showing <span className="font-semibold text-gray-900">{(page-1)*pageSize+1}-{Math.min(page*pageSize, files.length)}</span> of <span className="font-semibold text-gray-900">{files.length}</span></span>
+                    <span className="text-sm font-normal text-gray-500 mb-4 md:mb-0 block w-full md:inline md:w-auto">Showing <span className="font-semibold text-gray-900">{(page-1)*pageSize+1}-{Math.min(page*pageSize, result.valid.length)}</span> of <span className="font-semibold text-gray-900">{result.valid.length}</span></span>
                     <ul className="inline-flex -space-x-px rtl:space-x-reverse text-sm h-8">
                         <li>
                             <a href="#" className="flex items-center justify-center px-3 h-8 ms-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-s-lg hover:bg-gray-100 hover:text-gray-700" onClick={()=>changePage(page-1)}>Previous</a>
@@ -188,6 +189,18 @@ const Home = () => {
                         </li>
                     </ul>
                 </nav> 
+
+                <div className='bg-red-100 rounded-lg mt-5 p-5 text-left'>
+                    <span className='font-semibold text-gray-700'>Below {invalidFiles?.length} file(s) could not be processed correctly:</span>
+                    <div className='grid grid-flow-row-dense grid-cols-2 text-gray-500 mt-2 ms-2'>
+                        {invalidFiles?.map(file => {
+                            return (
+                            <li>
+                            {file}
+                            </li>)
+                        })}
+                    </div>
+                </div>
             </div>) : (
                 <div className='p-10'>
                     <div className="w-full bg-gray-200 rounded-full">

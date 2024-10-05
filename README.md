@@ -1,6 +1,11 @@
 # Getting Started
 
 - Install docker
+- Check if docker desktop is running fine
+  - Open command prompt/terminal and run `docker --version`
+  - It should show output similar to below
+    
+   ![image](https://github.com/user-attachments/assets/7e104c65-f150-4bda-9f21-ec15dd0ebb39)
 - Open Docker Desktop
 - Run `docker compose up`
 
